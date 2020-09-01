@@ -10,70 +10,59 @@ import * as Animatable from 'react-native-animatable';
 
 const App = () => {
   const [count, setCount] = useState(0);
-  const onPress = () => setCount(prevCount => prevCount + 1);
-  const reStart = () =>setCount(prevCount => 0);
+  // const onPress = () => setCount(prevCount => prevCount + 1);
+  // const reStart = () =>setCount(prevCount => 0);
   return (
-      <ScrollView style={styles.scrollView}>
-        <View style={styles.sectionContainer}>
-          <Text style={styles.welcomeText}>
-            Welcome here my friend!
-          </Text>
-
-          <View style={styles.imgContainer}>
-            <TouchableOpacity onPress={onPress}>
-              <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={styles.cell}>️
-                🖱️
-              </Animatable.Text>
-              <Text style={{fontSize:20,}}>How many times you click</Text>
-              <Text style={styles.countText}>{count}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity onPress={reStart}>
-              <Text>click on me to restart.</Text>
-            </TouchableOpacity>
-          </View>
+      <View style={{
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'stretch',
+      }}>
+        <View style={styles.imgContainer}>
+          <TouchableOpacity onPress={()=>setCount(count+1)} style={styles.imgClickArea} >
+            <Animatable.Text animation="pulse" easing="ease-out" iterationCount="infinite" style={styles.imgArea}>🖱️
+            </Animatable.Text>
+          </TouchableOpacity>
         </View>
-      </ScrollView>
+        <View style = {styles.countContainer}>
+          <Text style = {{fontSize: 30}}>How many times you click</Text>
+          <Text style = {{fontSize: 80}}>{count}</Text>
+          <TouchableOpacity onPress={()=>setCount(0)}>
+            <Text style = {[styles.restartContainer,{fontSize: 30}]}>click on me to restart.</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
   )
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: 'white',
+  imgContainer:{
+    flex: 2,
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor:'powderblue',
   },
-  sectionContainer: {
-    marginTop: 50,
-    paddingHorizontal: 24,
+  imgClickArea:{
+    alignSelf:'center',
+    justifyContent: 'center',
+    backgroundColor:'red',
+    width:160,
+    height:170,
   },
-  welcomeText: {
-    fontSize:30,
+  imgArea:{
+    fontSize: 150,
+  },
+  countContainer:{
+    flex:3,
+    flexDirection:'column',
+    alignItems:'center',
+    justifyContent: 'center',
+    backgroundColor:'steelblue',
+  },
+  restartContainer:{
     backgroundColor:'red',
   },
-  imgContainer:{
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    alignItems:'center',
-    justifyContent: 'center',
-  },
-  cell:{
-    marginTop:50,
-    marginLeft:30,
-    fontSize:100,
-    height:150,
-    width:150,
-    alignItems:'center',
-    justifyContent: 'center',
-  },
-  countText:{
-    marginTop:50,
-    marginLeft:75,
-    fontSize:100,
-    height:150,
-    width:150,
-    alignItems:'center',
-    justifyContent: 'center',
-  }
 
 });
 

@@ -52,7 +52,6 @@ const data = [
 //function to initialize the Track Player
 const trackPlayerInit = async () => {
   await TrackPlayer.setupPlayer();
-
   await TrackPlayer.add(data);
   return true;
 };

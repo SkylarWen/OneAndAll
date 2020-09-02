@@ -5,3 +5,6 @@ Day2 Styles: fixed vs flex, layout(flexDirection,JustifyContent,AlignItems,Align
      useState trying
      add music -using react-native-track-player
      
+Day3 react-native android app apk 
+//https://reactnative.cn/docs/signed-apk-android
+     
